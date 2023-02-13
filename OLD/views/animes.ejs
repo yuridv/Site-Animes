@@ -1,0 +1,114 @@
+<html lang="en">
+  <head>
+    <title><%=title%></title>
+    <% include imports/head %>
+  </head>
+  <body>
+    <% include imports/navbar %>
+    <div style="padding-top: 13vh; width: 100%; text-align: center; display: flex; flex-direction: column">
+      <a class="font-12" style="font-weight: 600; font-size: 2.7vh; border-radius: 0.4vh; padding-left: 1.5vh;">Lista de Animes:</a>
+      <a class="font-12" style="font-weight: 500; font-size: 2vh; margin-top: 1vh; border-radius: 0.4vh; padding-left: 1.5vh;">Filtros de Busca</a>
+      <div style="display: flex; width: 100%; justify-content: center">
+        <div class="marginLeft2-5 width20" style="margin-left: 5vh; margin-top: 1.5vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 12%; height: 0.15vh;"></div>
+      </div>
+      <div style="max-width: 100%; width: 100%; margin-top: 1vh; font-weight: 500; display: flex; justify-content: center; flex-flow: wrap;">
+        <a href="/animes" class="buttonRed" style="margin-block: 1vh; color: white; text-decoration: none; cursor: pointer; font-size: 2.1vh; margin-inline: 0.5vh; border-radius: 0.5vh; background: red; padding-block: 0.5vh; padding-inline: 1vh">Todos</a>
+        <% for (var i = 1; i < 27; i++) { %>
+          <a href="/letra/<%= (i+9).toString(36).toUpperCase() %>" class="buttonRed" style="margin-block: 1vh; color: white; text-decoration: none; cursor: pointer; font-size: 2.1vh; margin-inline: 0.5vh; border-radius: 0.5vh; background: red; padding-block: 0.5vh; padding-inline: 1vh"><%= (i+9).toString(36).toUpperCase() %></a>
+        <% } %>
+      </div>
+      <div style="display: flex; width: 100%; justify-content: center">
+        <div class="marginLeft2-5 width20" style="margin-left: 5vh; margin-top: 1.5vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 12%; height: 0.15vh;"></div>
+      </div>
+      <div class="flexDirectionColumn" style="display: flex; flex-direction: row; margin-inline: 15%; margin-top: 2.5vh; justify-content: center; text-align: center">
+        <div style="display: flex; flex-direction: column">
+          <a onclick="openMenuAnimes('type')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin-inline: 0.5vh; margin-top: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Tipo <i style="margin-left: 1vh" class="fad fa-angle-down"></i></a>
+          <div id="type" style="display: none; flex-direction: column; font-size: 2vh; background: rgba(30,30,30); margin: 0.5vh; border-radius: 1vh">
+            <a id="allsT" onclick="setMenuAnimes('type','allsT')" class="buttonRed" style="cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh; background: rgba(150,0,0,0.9)">Todos</a>
+            <a id="anime" onclick="setMenuAnimes('type','anime')" class="buttonRed" style="cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Animes</a>
+            <a id="filme" onclick="setMenuAnimes('type','filme')" class="buttonRed" style="cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Filmes</a>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <a onclick="openMenuAnimes('gender')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin-inline: 0.5vh; margin-top: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Gêneros <i style="margin-left: 1vh" class="fad fa-angle-down"></i></a>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <a onclick="openMenuAnimes('idioma')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin-inline: 0.5vh; margin-top: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Idioma <i style="margin-left: 1vh" class="fad fa-angle-down"></i></a>
+          <div id="idioma" style="display: none; flex-direction: column; font-size: 2vh; background: rgba(30,30,30); margin: 0.5vh; border-radius: 1vh">
+            <a id="allsI" onclick="setMenuAnimes('idioma','allsI')" class="buttonRed" style="cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh; background: rgba(150,0,0,0.9)">Todos</a>
+            <a id="legendado" onclick="setMenuAnimes('idioma','legendado')" class="buttonRed" style="cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Legendado</a>
+            <a id="dublado" onclick="setMenuAnimes('idioma','dublado')" class="buttonRed" style="cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Dublado</a>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <a onclick="openMenuAnimes('ano')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin-inline: 0.5vh; margin-top: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Ano <i style="margin-left: 1vh" class="fad fa-angle-down"></i></a>
+        </div>
+      </div>
+      <div style="margin-inline: 29%; max-width: 60%; justify-content: center;">
+        <div id="ano" style="max-width: 100%; width: 100%; display: none; justify-content: center; flex-flow: wrap; font-size: 2vh; background: rgba(30,30,30); margin: 0.5vh; border-radius: 1vh">
+          <a id="allsA" onclick="setMenuAnimes('ano','allsA')" class="buttonRed" style="background: rgba(150,0,0,0.9); font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Todos</a>
+          <% for (var i = 2022; i > 1949; i--) { %>
+            <a id="<%=i%>" onclick="setMenuAnimes('ano','<%=i%>')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh"><%= i %></a>
+          <% } %>
+        </div>
+        <div id="gender" style="max-width: 100%; width: 100%; display: none; justify-content: center; flex-flow: wrap; font-size: 2vh; background: rgba(30,30,30); margin: 0.5vh; border-radius: 1vh">
+          <a id="allsG" onclick="setMenuAnimes('gender','allsG')" class="buttonRed" style="background: rgba(150,0,0,0.9); font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Todos</a>
+          <a id="acao" onclick="setMenuAnimes('gender','acao')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Ação</a>
+          <a id="comedia" onclick="setMenuAnimes('gender','comedia')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Comédia</a>
+          <a id="esporte" onclick="setMenuAnimes('gender','esporte')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Esporte</a>
+          <a id="harem" onclick="setMenuAnimes('gender','harem')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Harém</a>
+          <a id="magia" onclick="setMenuAnimes('gender','magia')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Magia</a>
+          <a id="musical" onclick="setMenuAnimes('gender','musical')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Musical</a>
+          <a id="romance" onclick="setMenuAnimes('gender','romance')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Romance</a>
+          <a id="shounen" onclick="setMenuAnimes('gender','shounen')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Shounen</a>
+          <a id="superpoder" onclick="setMenuAnimes('gender','superpoder')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Super-Poder</a>
+          <a id="artes+marciais" onclick="setMenuAnimes('gender','artes+marciais')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Artes Marciais</a>
+          <a id="drama" onclick="setMenuAnimes('gender','drama')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Drama</a>
+          <a id="fantasia" onclick="setMenuAnimes('gender','fantasia')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Fantasia</a>
+          <a id="isekai" onclick="setMenuAnimes('gender','isekai')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Isekai</a>
+          <a id="mecha" onclick="setMenuAnimes('gender','mecha')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Mecha</a>
+          <a id="parodia" onclick="setMenuAnimes('gender','parodia')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Paródia</a>
+          <a id="seinen" onclick="setMenuAnimes('gender','seinen')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Seinen</a>
+          <a id="slice+of+life" onclick="setMenuAnimes('gender','slice+of+life')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Slice Of Life</a>
+          <a id="terror" onclick="setMenuAnimes('gender','terror')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Terror</a>
+          <a id="aventura" onclick="setMenuAnimes('gender','aventura')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Aventura</a>
+          <a id="ecchi" onclick="setMenuAnimes('gender','ecchi')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Ecchi</a>
+          <a id="ficcao+cientifica" onclick="setMenuAnimes('gender','ficcao+cientifica')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Ficção Científica</a>
+          <a id="jogos" onclick="setMenuAnimes('gender','jogos')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Jogos</a>
+          <a id="misterio" onclick="setMenuAnimes('gender','misterio')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Mistério</a>
+          <a id="psicologico" onclick="setMenuAnimes('gender','psicologico')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Psicológico</a>
+          <a id="shoujo+ai" onclick="setMenuAnimes('gender','shoujo+ai')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Shoujo-ai</a>
+          <a id="sobrenatural" onclick="setMenuAnimes('gender','sobrenatural')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Sobrenatural</a>
+          <a id="vida+escolar" onclick="setMenuAnimes('gender','vida+escolar')" class="buttonRed" style="font-size: 2vh; cursor: pointer; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Vida Escolar</a>
+        </div>
+      </div>
+    </div>
+    <div class="flexDirectionColumn" style="display: flex; margin-top: 4vh; margin-inline: 5%; width: 90%; min-height: 40%; margin-bottom: 3vh">
+      <div class="width100 maxWidth100" id="animes" style="width: 75%; display: flex; justify-content: center; flex-flow: wrap;">
+        <div style="position: relative; width: 100%; height: 30vh">
+          <div style="position: absolute; top: 30%; left: 50%; margin-top: -2vh; margin-left: -2vh">
+            <div class="loader-wheel"></div>
+            <div class="loader-text font-5"></div>
+          </div>
+        </div>
+      </div>
+      <div class="invisibleAndroid" style="width: 25%; overflow: hidden  flex-direction: column">
+        <div class="marginLeft0" style="margin-top: 6vh; margin-left: 10%">
+          <a class="font-12" style="margin-left: 1%; font-weight: 600; font-size: 2.7vh; border-radius: 0.4vh; padding-left: 1.5vh;">Populares</a>
+          <div style="margin-bottom: 2vh; margin-left: 1.7vh; margin-top: 1.5vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 20%; height: 0.15vh;"></div>
+          <div id="tops">
+            <div id="loadPopulares" style="position: relative; min-height: 10vh; width: 100%;">
+              <div style="position: absolute; top: 50%; left: 50%; margin-top: -2vh; margin-left: -2vh">
+                <div class="loader-wheel"></div>
+                <div class="loader-text font-5"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="width100 maxWidth100" style="width: 75%; margin-bottom: 3vh; text-align: center" id="pages"></div>
+    <% include imports/footer %>
+  </body>
+</html>
+<script src="/js/animes.js"></script>

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+@font-face { font-family: 'Japones'; src: url('../fonts/Japones.ttf') }
+
+.font-1 { font-family: 'Japones', sans-serif!important; }
+
+.navbar-item:hover {
+  color: red!important;
+  border-bottom: 0.3vh solid red;
+  border-radius: 0.1vh;
+  transition: 0.5s;
+  padding-block: 2.5vh;
+}
+
+body {
+  background-color: black;
+  color: white;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}

@@ -1,0 +1,63 @@
+<html lang="en">
+  <head>
+    <title><%=title%></title>
+    <% include imports/head %>
+  </head>
+  <body>
+    <% include imports/navbar %>
+    <div style="padding-top: 15vh; margin-inline: 10%; text-align: center;">
+      <a class="font-12" style="font-weight: 600; font-size: 2.7vh; border-radius: 0.4vh; padding-left: 1.5vh;">Calendario:</a>
+      <div style="display: flex; width: 100%; justify-content: center">
+        <div style="margin-left: 1.7vh; margin-top: 1.5vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 8%; height: 0.15vh;"></div>
+      </div>
+    </div>
+    <div class="flexDirectionColumn" style="display: flex; flex-direction: row; margin-inline: 15%; margin-top: 2.5vh; justify-content: center; text-align: center">
+      <a id="Domingo" onclick="loadCalendar('Domingo')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(200,0,0,0.9); margin: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Domingo</a>
+      <a id="Segunda-Feira" onclick="loadCalendar('Segunda-Feira')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Segunda-Feira</a>
+      <a id="Terça-Feira" onclick="loadCalendar('Terça-Feira')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Terça-Feira</a>
+      <a id="Quarta-Feira" onclick="loadCalendar('Quarta-Feira')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Quarta-Feira</a>
+      <a id="Quinta-Feira" onclick="loadCalendar('Quinta-Feira')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Quinta-Feira</a>
+      <a id="Sexta-Feira" onclick="loadCalendar('Sexta-Feira')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Sexta-Feira</a>
+      <a id="Sábado" onclick="loadCalendar('Sábado')" class="buttonRed" style="cursor: pointer; font-size: 2.5vh; background: rgba(30,30,30); margin: 0.5vh; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Sábado</a>
+    </div>
+    <div id="animes" style="display: flex; justify-content: center; flex-flow: wrap; margin-top: 2vh; margin-inline: 8%; min-height: 40%; margin-bottom: 3vh">
+      <div style="position: relative; width: 100%; height: 30vh">
+        <div style="position: absolute; top: 30%; left: 50%; margin-top: -2vh; margin-left: -2vh">
+          <div class="loader-wheel"></div>
+          <div class="loader-text font-5"></div>
+        </div>
+      </div>
+    </div>
+    <div id="pages" style="margin-bottom: 3vh; text-align: center"></div>
+    <% include imports/footer %>
+  </body>
+</html>
+<script>
+  var menuCalendar = 'Domingo'
+  var loadMenuCalendar = false
+  function loadCalendar(date) {
+    if (loadMenuCalendar) return;
+    loadMenuCalendar = true
+    document.getElementById(menuCalendar).style.background = 'rgba(30,30,30)'
+    document.getElementById(date).style.background = 'rgba(200,0,0,0.9)'
+    menuCalendar = date
+    if (!date) return; 
+    document.getElementById("animes").innerHTML = `<div style="position: relative; width: 100%; height: 30vh"><div style="position: absolute; top: 30%; left: 50%; margin-top: -2vh; margin-left: -2vh"><div class="loader-wheel"></div><div class="loader-text font-5"></div></div></div>`
+    $.ajax({ method: "post", url: `/loadCalendar`,
+      data: { date: date },
+      success: function(s) {
+        loadMenuCalendar = false
+        document.getElementById('animes').innerHTML = ``
+        if (s && s.calendar && s.calendar.length > 0) {
+          s.calendar.forEach((anime, index)=>{ document.getElementById('animes').innerHTML += `<div onclick="location.href = '/anime/${anime.url}'" class="calendarMain minWidth40 height32" title="${anime.name}" style="cursor: pointer; min-width: 16%; height: 44vh; margin-right: 1%; background: url('${anime.img}'); background-size: cover; background-position: center; border-radius: 1vh;"><div class="textAvatar displayWebKit" style="width: 100%; height: 100%; text-align: center; background: linear-gradient(to bottom,rgba(3, 3, 3, 1) 0%,rgba(3, 3, 3, 0.1) 22%,rgba(3, 3,3, 0.1) 70%,rgba(3, 3, 3, 1) 100%);"><div style="position: relative; width: 100%; height:100%"><div class="textAvatar2" style="opacity: 0; position: absolute; top: 40%; width: 100%; font-size: 6vh; color: red"><i class="fad fa-play"></i></div><div style="position: absolute; bottom: 2vh; margin-inline: 2vh; text-align: left"><div style="width: 100%; text-shadow: 0.7vh 0.7vh 0.9vh rgb(0, 0, 0); display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;"><a class="font-3" style="font-size: 2.2vh; font-weight: 600; color: white">${anime.name}</a></div><div style="width: 100%; text-shadow: 0.7vh 0.7vh 0.9vh rgb(0, 0, 0); display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;"><a class="font-3" style="font-size: 2vh; font-weight: 600; color: red">${anime.type}</a></div><div class="displayWebKit2" style="width: 100%; text-shadow: 0.7vh 0.7vh 0.9vh rgb(0, 0, 0); display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1; display: none;"><a class="font-3" style="font-size: 2vh; font-weight: 600; color: white">${anime.eps}</a></div></div></div></div></div>` })
+        } else { document.getElementById('animes').innerHTML = `<div style="width: 100%; margin-top: 2%; text-align: center; color: red; font-size: 2vh"><a>Ocorreu algum erro ao carregar o calendário...<br/>Reporte para nossa equipe!</a></div>` }
+      },
+      error: function(e) {
+        loadMenuCalendar = false
+        document.getElementById('animes').innerHTML = `<div style="width: 100%; margin-top: 8%; text-align: center; color: red; font-size: 2vh">Ocorreu algum erro ao carregar o calendário...<br/>Reporte para nossa equipe!</a><br/>`
+      } 
+    })
+  }(function () {
+    loadCalendar(`Domingo`)
+  })();
+</script>

@@ -1,0 +1,465 @@
+<html lang="en">
+  <head>
+    <% include imports/head %>
+    <title><%=title%></title>
+    <meta name="description" content="<%=anime.sinopse%>">
+  </head>
+  <body>
+    <% include imports/navbar %>
+    <div style="padding-top: 11vh; width: 100%; min-height: 70%;">
+      <div class="height40" style="position: relative; width: 90%; height: 55%; margin-inline: 5%;">
+        <div style="width: 100%; height: 100%; background: url('<%=anime.image%>'); background-size: cover; background-position: center; filter: blur(1.5vh);">
+          <div style="background: linear-gradient(to bottom,rgba(3, 3, 3, 0.4) 0%,rgba(3, 3, 3, 1) 100%); width: 101%; height: 100%; margin-left: -1%;">
+          </div>
+        </div>
+        <div class="invisibleAndroid" style="position: absolute; bottom: 15%; left: 25%; text-shadow: 0.7vh 0.7vh 0.9vh rgb(0, 0, 0);">
+          <a style="font-size: 2vh; border-radius: 1vh; font-weight: 500; padding-inline: 2vh; padding-block: 1vh; background: red; font-weight: 600"><%=anime.tipodeepisdio%></a>
+        </div>
+        <div class="invisibleAndroid" style="text-shadow: 0.7vh 0.7vh 0.9vh rgb(0, 0, 0); z-index: 10; position: absolute; bottom: 0%; right: 30%; display: flex; flex-direction: row;">
+          <div class="colorRed calendarMain" style="background: rgba(3,3,3,1); cursor: pointer; width: 18vh; height: 10vh; display: flex; flex-direction: column; text-align: center; padding-top: 2vh">
+            <i class="fad fa-heart" style="font-size: 4.2vh"></i>
+            <a style="font-size: 2.4vh; font-weight: 800">Favoritar</a>
+          </div>
+          <div style="width: 2vh"></div>
+          <div class="colorRed calendarMain" style="text-shadow: 0.7vh 0.7vh 0.9vh rgb(0, 0, 0); background: rgba(3,3,3,1); cursor: pointer; width: 18vh; height: 10vh; display: flex; flex-direction: column; text-align: center; padding-top: 2vh">
+            <i class="fad fa-bookmark" style="font-size: 4.2vh"></i>
+            <a style="font-size: 2.4vh; font-weight: 800">Adicionar Em</a>
+          </div>
+        </div>
+        <div class="invisibleAndroid" style="z-index: 15; position: absolute; bottom: -12%; left: 20%; margin-inline: 5%; margin-block: 2vh; margin-top: 2vh; display: flex; flex-direction: column">
+          <%if (anime.temp1) {%>
+            <a class="font-12" style="font-weight: 600; font-size: 1.8vh; border-radius: 0.4vh;">Temporada Anterior/Proxima:</a>
+            <a href="/anime/<%=anime.temp1.url%>" class="font-12" style="font-size: 1.7vh; color: red"><%=anime.temp1.name%></a>
+            <%if (anime.temp2) {%> <a href="/anime/<%=anime.temp2.url%>" class="font-12" style="font-size: 1.7vh; color: red"><%=anime.temp2.name%></a> <%}%>
+          <%}%>
+        </div>
+      </div>
+      <div>
+        <div class="flexDirectionColumn" style="display: flex; position: relative; width: 90%; margin-inline: 5%; margin-left: 8%; ">
+          <div class="marginTop-70 border1 width50 height35 minHeight35 marginInline20" style="margin-top: -25.5%; background: url('<%=anime.image%>'); width: 35vh; height: 53vh; height: 53vh; border-radius: 1vh; background-size: cover; background-position: center; border: 1.5vh solid rgba(3, 3, 3);"><div style="background: linear-gradient(to bottom,rgba(3, 3, 3, 0.8) 0%,rgba(3, 3, 3, 0.2) 20%,rgba(3, 3, 3, 0.2) 0%,rgba(3, 3, 3, 1) 100%); width: 102%; height: 102%; margin-top: -1%; margin-left: -1%"></div></div>
+          <div class="width90 textAlignCenter marginTop2" style="margin-left: 2%; width: 47%; margin-top: calc(-25.5% + 2vh)">
+            <div class="flexDirectionColumn" style="display: flex; flex-direction: row">
+              <div class="width100" style="width: 65%;">
+                <a style="font-size: 3.5vh; font-weight: 700; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;" title="<%=anime.name%>"><%=anime.name%></a>
+                <a style="margin-top: 1vh; font-size: 2vh; font-weight: 550; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;" title="<%=anime.nomealternativo%>"><%=anime.nomealternativo%></a>
+              </div>
+              <div class="width100 marginTop2" style="width: 35%; display: flex; flex-direction: row">
+                <div id="like2" onclick="like()" class="colorRed calendarMain" style="cursor: pointer; width: 48%; height: 6vh; max-width: 48%; overflow: hidden; background: rgb(15,15,15); border-radius: 1vh; font-size: 3vh; display: flex; align-items: center; justify-content: center;">
+                  <i class="fad fa-thumbs-up"></i>
+                  <a id="like" style="margin-left: 1.5vh; margin-top: 0.5vh; font-weight: 600"><%= animeTable.like ? animeTable.like : '0'%></a>
+                </div>
+                <div id="dislike2" onclick="dislike()" class="colorRed calendarMain" style="cursor: pointer; margin-left: 4%; width: 48%; height: 6vh; max-width: 48%; overflow: hidden; background: rgb(15,15,15); border-radius: 1vh; font-size: 3vh; display: flex; align-items: center; justify-content: center;">
+                  <i class="fad fa-thumbs-down"></i>
+                  <a id="dislike" style="margin-left: 1.5vh; margin-top: 0.5vh; font-weight: 600"><%= animeTable.dislike ? animeTable.dislike : '0'%></a>
+                </div>
+              </div>
+            </div>
+            <a style="margin-top: 3vh; font-size: 2.8vh; font-weight: 800; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;">Sinopse:</a>
+            <div class="justifyContentCenter" style="display: flex; width: 100%;">
+              <div class="width20" style="margin-top: 0.6vh; margin-bottom: 1vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 13%; height: 0.15vh;"></div>
+            </div>
+            <div style="padding-right: 1vh; max-height: 9.5vh; overflow: auto;">
+              <a style="font-size: 2vh; font-weight: 500;"><%=anime.sinopse%></a>
+            </div>
+          </div>
+          <div class="visibleAndroid" style="flex-direction: row; margin-top: 3vh; max-width: 100%; width: 100%; justify-content: center; max-height: 100%;">
+            <div class="colorRed calendarMain" style="margin-left: -2vh;background: rgba(15,15,15,1); border-radius: 1vh; cursor: pointer; width: 18vh; height: 10vh; display: flex; flex-direction: column; text-align: center; padding-top: 2.5vh">
+              <i class="fad fa-heart" style="font-size: 4.2vh"></i>
+              <a style="font-size: 2.4vh; font-weight: 800">Favoritar</a>
+            </div>
+            <div style="width: 2vh"></div>
+            <div class="colorRed calendarMain" style="background: rgba(15,15,15,1); border-radius: 1vh; cursor: pointer; width: 18vh; height: 10vh; display: flex; flex-direction: column; text-align: center; padding-top: 2.5vh">
+              <i class="fad fa-bookmark" style="font-size: 4.2vh"></i>
+              <a style="font-size: 2.4vh; font-weight: 800">Adicionar Em</a>
+            </div>
+          </div>
+          <div class="marginTop2 width112 marginLeft-10 background45-08" style="max-width: 111%; oveflow: hidden; width: 24%; margin-left: 1.5%; height: 50%; background: rgba(45, 45, 45, 0.2); margin-top: -33%;">
+            <div style="background: linear-gradient(to bottom,rgba(0, 0, 0, 0.8) 0%,rgba(0, 0, 0, 0.2) 20%,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 1) 100%); width: 102%; height: 102%; margin-top: -1%; margin-left: -1%">
+              <div class="paddingTop2" style="padding-inline: 3vh; padding-top: 9vh; padding-bottom: 8vh">
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Nomes Alternativo:</strong> <%=anime.nomealternativo%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Formato:</strong> <%=anime.formato%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Autor:</strong> <%=anime.autor%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Diretor:</strong> <%=anime.diretor%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Estúdio:</strong> <%=anime.estdio%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Ano:</strong> <%=anime.ano%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Tipo:</strong> <%=anime.tipodeepisdio%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Dia de Lançamento:</strong> <%=anime.diadelanamento ? anime.diadelanamento : 'Completo'%></a>
+                </div>
+                <div style="margin-bottom: 0.5vh; margin-top: 1vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 50%; height: 0.15vh;"></div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 4; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Gêneros:</strong> <%=anime.gnero%></a>
+                </div>
+                <div style="margin-bottom: 1vh; margin-top: 0.5vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 50%; height: 0.15vh;"></div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Episódios:</strong> <%=anime.episdios%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Ovas:</strong> <%=anime.ovas%></a>
+                </div>
+                <div style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; margin-block: 1vh">
+                  <a style="font-size: 2.2vh"><strong>Filmes:</strong> <%=anime.filmes%></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="visibleAndroid" style="margin-inline: 5%; margin-bottom: 2vh; flex-direction: column">
+          <%if (anime.temp1) {%>
+            <a class="font-12" style="font-weight: 600; font-size: 1.8vh; border-radius: 0.4vh;">Temporada Anterior/Proxima:</a>
+            <div style="margin-bottom: 0.8vh; margin-top: 0.8vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 35%; height: 0.16vh;"></div>
+            <a href="/anime/<%=anime.temp1.url%>" class="font-12" style="font-size: 1.7vh; color: red"><%=anime.temp1.name%></a>
+            <%if (anime.temp2) {%> <a href="/anime/<%=anime.temp2.url%>" class="font-12" style="font-size: 1.7vh; color: red"><%=anime.temp2.name%></a> <%}%>
+          <%}%>
+        </div>
+      </div>
+            
+      <div class="flexDirectionColumn" style="display: flex; margin-inline: 5%; width: 90%; min-height: 40%; margin-bottom: 3vh">
+        <div class="width100 maxWidth100" id="animes" style="width: 75%; margin-top: 2%">
+          <a class="font-12" style="margin-left: 1%; font-weight: 600; font-size: 2.7vh; border-radius: 0.4vh; padding-left: 1.5vh;">Episódios</a>
+          <div style="margin-bottom: 2vh; margin-left: 1.7vh; margin-top: 1.5vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 10%; height: 0.15vh;"></div>
+          <div id="eps" style="display: flex; flex-flow: wrap; margin-top: 1vh; margin-left: 1vh">
+            <%anime.eps.forEach((anime)=>{%>
+              <div title="<%=anime.title%>" class="textAvatar calendarMain maxWidth48 width48" style="max-width: 18%; width: 18%; margin-right: 1%; margin-bottom: 2vh">
+                <div class="height15" style="cursor: pointer; width: 100%; height: 16vh; background: url('<%=anime.img%>'); background-size: cover; background-position: center; border-radius: 1vh;">
+                  <div style="position: relative; width: 100%; height: 100%; background: linear-gradient(to bottom,rgba(3, 3, 3, 1) 0%,rgba(3, 3, 3, 0.1) 22%,rgba(3, 3,3, 0.1) 70%,rgba(3, 3, 3, 1) 100%)">
+                    <div class="textAvatar2" style="text-align: center; opacity: 0; position: absolute; top: 30%; width: 100%; font-size: 6vh; color: red">
+                      <i class="fad fa-play"></i>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-inline: 1vh; cursor: pointer; text-shadow: 0.7vh 0.7vh 0.9vh rgb(0, 0, 0);">
+                  <a class="font-3" style="font-size: 2.2vh; font-weight: 600; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;"><%=anime.title%></a>
+                  <a class="font-3" style="font-size: 1.8vh; font-weight: 600; color: gray; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;"><%=anime.ep%></a>
+                </div>
+              </div>
+            <%})%>
+          </div>
+          <div style="margin-top: 6vh">
+            <a class="font-12" style="margin-left: 1%; font-weight: 600; font-size: 2.7vh; border-radius: 0.4vh; padding-left: 1.5vh;">Comentários</a>
+            <div style="margin-bottom: 2vh; margin-left: 1.7vh; margin-top: 1.5vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 10%; height: 0.15vh;"></div>
+            <div style="display: flex; flex-direction: row; margin-top: 1vh;">
+              <textarea class="comments" id="comments" disabled rows="4" placeholder="Faça login para comentar sobre o anime!" style="cursor: not-allowed; width: 90%; background: rgba(10,10,10); padding: 1vh; font-size: 2vh; border: 0.1vh solid red; border-radius: 1vh; color: white"></textarea>
+              <i id="emojisDisabled" style="margin-left: 2vh; margin-top: 1vh; cursor: not-allowed; font-size: 4vh; color: gray; background: transparent; border: none;" class="colorRed fad fa-grin-stars"></i>
+            </div>
+            <div style="margin-top: 2vh; width: 90%; display: flex; position: relative;">
+              <a id="buttonComment" onclick="comment()" class="backgroundRed" style="cursor: not-allowed; font-size: 2.5vh; font-weight: 800; color: white; background: red; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Comentar</a>
+              <div style="display: flex; position: absolute; right: 2%; top: 0%;">
+                  <div id="spoilerS" onclick="inputChecked('spoiler')" class="slider">
+                    <div id="spoilerB" class="sliderB"></div>
+                    <input name='spoiler' id="spoiler" value='false' type='hidden'>
+                  </div>
+                  <a class="font-3" style="margin-left: 0.8vh; margin-top: 0.35vh; font-size: 2.3vh">Spoiler?</a>
+              </div>
+            </div>
+            <div id="comentarios" style="width: 100%; max-width: 100%; overflow: hidden; display: flex; flex-direction: column; padding-bottom: 14vh">
+              <% if (animeTable && animeTable.comments) { animeTable.comments.reverse().forEach((commentInfo, index) => { %>
+                <%if (usersTable.users[commentInfo.author]) {%>
+                  <div id="fullComment<%=index%>" style="display: flex; flex-direction: row; margin-top: 3vh">
+                    <div style="width: 7vh;">
+                      <img src="<%=usersTable.users[commentInfo.author].avatar%>" style="width: 7vh; height: 7vh; border-radius: 8vh">
+                    </div>
+                    <div style="width: 90%; margin-left: 2vh; margin-top: 1vh">
+                      <div style="display: flex; flex-direction: row">
+                        <a style="font-size: 2.3vh; font-weight: 500"><%=usersTable.users[commentInfo.author].name%></a>
+                        <a style="color: red; font-size: 1.5vh; margin-left: 1vh"><%=usersTable.users[commentInfo.author].role%></a>
+                        <a style="color: gray; font-size: 1.5vh; margin-left: 1vh">Há <%=`${moment.duration(commentInfo.moment-date).months() ? `${moment.duration(date-commentInfo.moment).months()} Mês(es)` : moment.duration(date-commentInfo.moment).days() ? `${moment.duration(date-commentInfo.moment).days()} Dia(s)` : moment.duration(date-commentInfo.moment).hours() ? `${moment.duration(date-commentInfo.moment).hours()} Hora(s)` : moment.duration(date-commentInfo.moment).minutes() ? `${moment.duration(date-commentInfo.moment).minutes()} Minuto(s)` : moment.duration(date-commentInfo.moment).seconds() ? `${moment.duration(date-commentInfo.moment).seconds()} Segundo(s)` : '???'}`%></a>
+                      </div>
+                      <div style="margin-top: 0.3vh; display: flex; flex-direction: row">
+                        <a id="comentario<%=index%>" onclick="removerSpoiler(this)" style="<%=commentInfo.spoiler ? 'filter: blur(1vh); cursor: pointer;' : ''%> font-size: 2vh; color: rgba(200,200,200)"><%=commentInfo.comment%></a>
+                        <%if (commentInfo.spoiler) {%> <a style="color: gray; font-size: 1.5vh; margin-left: 1vh">Spoiler</a> <%}%>
+                      </div>
+                      <div style="margin-top: 0.8vh; display: flex; flex-direction: column;">
+                        <div style="display: flex; flex-direction: row">
+                          <a onclick="openResponse('<%=index%>','<%=commentInfo._id%>')" class="colorRed" style="font-size: 2vh; cursor: pointer"><i class="fad fa-reply-all" style="margin-right: 0.7vh"></i> Responder</a>
+                          <div style="position: relative; margin-left: 3vh;">
+                            <a id="moreButton" onclick="openMoreButton('more<%=index%>', '<%=commentInfo.author%>')" class="colorRed" style="font-size: 2vh; cursor: pointer;"><i class="fad fa-ellipsis-h" style="margin-right: 0.7vh"></i> Mais</a>
+                            <div id="more<%=index%>" class="left-50" style="display: none; z-index: 1; position: absolute; top: 120%; left: 0%; width: 20vh; font-size: 2vh; font-weight: 500; flex-direction: column; background: white; border-radius: 1vh; color: rgba(50,50,50,1)">
+                              <a id="more<%=index%>delete" onclick="deleteComment('<%=commentInfo._id%>','<%=index%>')" class="buttonRed" style="display: none; cursor: pointer; padding-left: 1vh; padding-block: 1vh; border-radius: 0.9vh">Apagar Comentário</a>
+                              <a onclick="report('<%=index%>','Spam', false, '<%=commentInfo.author%>')" class="buttonRed" style="cursor: pointer; padding-left: 1vh; padding-block: 1vh; border-radius: 0.9vh">Reportar Spam</a>
+                              <a onclick="report('<%=index%>','Spoiler','<%=commentInfo.spoiler%>', '<%=commentInfo.author%>')" class="buttonRed" style="cursor: pointer; padding-left: 1vh; padding-block: 1vh; border-radius: 0.9vh">Reportar Spoiler</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="responseInput<%=index%>"></div>
+                        <div id="responses<%=index%>">
+                          <% commentInfo.responses.forEach((responseInfo, index2)=>{ %>
+                            <%if (usersTable.users[responseInfo.author]) {%>
+                              <div id="fullResponse<%=index%>-<%=index2%>" style="display: flex; flex-direction: row; margin-top: 3vh">
+                                <div style="width: 6vh;">
+                                  <img src="<%=usersTable.users[responseInfo.author].avatar%>" style="width: 6vh; height: 6vh; border-radius: 8vh">
+                                </div>
+                                <div style="width: 90%; margin-left: 2vh; margin-top: 0.5vh">
+                                  <div style="display: flex; flex-direction: row">
+                                    <a style="font-size: 2vh; font-weight: 500"><%=usersTable.users[responseInfo.author].name%></a>
+                                    <a style="color: red; font-size: 1.3vh; margin-left: 1vh"><%=usersTable.users[responseInfo.author].role%></a>
+                                    <a style="color: gray; font-size: 1.3vh; margin-left: 1vh">Há <%=`${moment.duration(responseInfo.moment-date).months() ? `${moment.duration(date-responseInfo.moment).months()} Mês(es)` : moment.duration(date-responseInfo.moment).days() ? `${moment.duration(date-responseInfo.moment).days()} Dia(s)` : moment.duration(date-responseInfo.moment).hours() ? `${moment.duration(date-responseInfo.moment).hours()} Hora(s)` : moment.duration(date-responseInfo.moment).minutes() ? `${moment.duration(date-responseInfo.moment).minutes()} Minuto(s)` : moment.duration(date-responseInfo.moment).seconds() ? `${moment.duration(date-responseInfo.moment).seconds()} Segundo(s)` : '???'}`%></a>
+                                  </div>
+                                  <div style="margin-top: 0.3vh; display: flex; flex-direction: row">
+                                    <a id="comentario<%=index%>-Resposta-<%=index2%>" onclick="removerSpoiler(this)" style="<%=responseInfo.spoiler ? 'filter: blur(1vh); cursor: pointer;' : ''%> font-size: 1.7vh; color: rgba(200,200,200)"><%=responseInfo.comment%></a>
+                                    <%if (responseInfo.spoiler) {%> <a style="color: gray; font-size: 1.3vh; margin-left: 1vh">Spoiler</a> <%}%>
+                                  </div>
+                                  <div style="margin-top: 0.8vh; display: flex; flex-direction: column;">
+                                    <div style="display: flex; flex-direction: row">
+                                      <div style="position: relative;">
+                                        <a id="moreButton" onclick="openMoreButton('moreResponse<%=index%>-<%=index2%>', '<%=responseInfo.author%>')" class="colorRed" style="font-size: 1.7vh; cursor: pointer;"><i class="fad fa-ellipsis-h" style="margin-right: 0.7vh"></i> Mais</a>
+                                        <div id="moreResponse<%=index%>-<%=index2%>" class="left-50" style="display: none; z-index: 1; position: absolute; top: 120%; left: 0%; width: 20vh; font-size: 1.7vh; font-weight: 500; flex-direction: column; background: white; border-radius: 1vh; color: rgba(50,50,50,1)">
+                                          <a id="moreResponse<%=index%>-<%=index2%>delete" onclick="deleteResponse('<%=commentInfo._id%>','<%=responseInfo._id%>', 'fullResponse<%=index%>-<%=index2%>')" class="buttonRed" style="display: none; cursor: pointer; padding-left: 1vh; padding-block: 1vh; border-radius: 0.9vh">Apagar Comentário</a>
+                                          <a onclick="report('<%=index%>-Resposta-<%=index2%>','Spam', false, '<%=responseInfo.author%>')" class="buttonRed" style="cursor: pointer; padding-left: 1vh; padding-block: 1vh; border-radius: 0.9vh">Reportar Spam</a>
+                                          <a onclick="report('<%=index%>-Resposta-<%=index2%>','Spoiler','<%=responseInfo.spoiler%>', '<%=responseInfo.author%>')" class="buttonRed" style="cursor: pointer; padding-left: 1vh; padding-block: 1vh; border-radius: 0.9vh">Reportar Spoiler</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            <% }}) %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <% }})} %>
+            </div>
+            <script src="/js/emojis.js"></script>
+            <script> new EmojiPicker({ trigger: [{ selector: '#emojis', insertInto: '.comments' }], closeButton: true }); </script>
+          </div>
+        </div>
+        <div class="invisibleAndroid width100 maxWidth100" style="z-index: 30; margin-top: -5%; width: 25%; overflow: hidden  flex-direction: column">
+          <div class="marginLeft0" style="margin-top: 8vh; margin-left: 10%">
+            <a class="font-12" style="margin-left: 1%; font-weight: 600; font-size: 2.7vh; border-radius: 0.4vh; padding-left: 1.5vh;">Populares</a>
+            <div style="margin-bottom: 2vh; margin-left: 1.7vh; margin-top: 1.5vh; background: linear-gradient(to right,rgba(255, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%); width: 20%; height: 0.15vh;"></div>
+            <div id="tops">
+              <div id="loadPopulares" style="position: relative; min-height: 10vh; width: 100%;">
+                <div style="position: absolute; top: 50%; left: 50%; margin-top: -2vh; margin-left: -2vh">
+                  <div class="loader-wheel"></div>
+                  <div class="loader-text font-5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include imports/footer %>
+  </body>
+</html>
+<script>
+  var moreOpen = false
+  $(document).click(function(event) {
+    if (moreOpen && (!event.target.id || (event.target.id !== "moreButton")) ) {
+      document.getElementById(moreOpen).style.display = "none"
+      moreOpen = false
+    }
+  });
+  function openMoreButton(id, author) {
+    if (moreOpen) {
+      document.getElementById(moreOpen).style.display = "none"
+      moreOpen = false
+    }
+    if (account && (account.index == String(author) || account.user.role == "Developer" || account.user.role == "CEO" || account.user.role == "Administrator" || account.user.role == "Moderator" || account.user.role == "Support")) {
+      document.getElementById(id+"delete").style.display = "flex"
+    } else {
+      document.getElementById(id+"delete").style.display = "none"
+    }
+    document.getElementById(id).style.display = "flex"
+    moreOpen = id
+  }
+  function removerSpoiler(msg) {
+    msg.style.filter = "none"
+    msg.style.cursor = "text"
+  }
+  var commentActive = false
+  function comment() {
+    if (account) {
+      if (document.getElementById("comments").value && document.getElementById("comments").value.length >= 5 && document.getElementById("comments").value.length <= 1000) {
+        if (commentActive) return;
+        commentActive = true
+        document.getElementById("buttonComment").innerHTML = "Aguarde..."
+        $.ajax({ method: "post", url: `/comment/`,
+          data: {
+            anime: "<%=anime.id%>",
+            email: localStorage.getItem('email'),
+            password: localStorage.getItem('password'),
+            comment: document.getElementById("comments").value,
+            spoiler: document.getElementById("spoiler").value == "true" ? true : false,
+          },
+          success: function(s) {
+            document.getElementById("comments").value = ""
+            document.getElementById("buttonComment").innerHTML = "Comentar"
+            window.location.reload()
+          },
+          error: function(e) { alert(`Erro...`); window.location.reload() }
+        })
+      } else alert("O seu comentário deve ter entre 5 a 1000 caracteres!")
+    } else alert("Faça login antes de fazer um comentário!")
+  }
+  function report(id, report, spoiler, author) {
+    if (!account) return alert("Faça login para reportar algum comentário!");
+    if (spoiler == "true" && report == "Spoiler") return alert("Esse comentário já está marcada como um Spoiler!");
+    if (document.getElementById(`comentario${id}`).innerHTML == "comentário reportado por Spam..." || document.getElementById(`comentario${id}`).innerHTML == "comentário reportado por Spoiler...") return alert("Você já reporto esse comentário!");
+    $.ajax({ method: "post", url: `/report`,
+      data: {
+        anime: "<%=anime.id%>",
+        url: `${window.location}`,
+        commentID: id,
+        comment: document.getElementById(`comentario${id}`).innerHTML,
+        commentAuthor: author,
+        report: report,
+        author: account.index,
+        email: localStorage.getItem('email'),
+        password: localStorage.getItem('password')
+      },
+      success: function(s) {
+        document.getElementById(`comentario${id}`).innerHTML = `comentário reportado por ${report}...`
+        document.getElementById(`comentario${id}`).style.color = "red"  
+      },
+      error: function(e) {}
+    })
+    
+  }
+  function deleteComment(id, index) {
+    $.ajax({ method: "post", url: `/deleteComment`,
+      data: {
+        anime: "<%=anime.id%>",
+        commentID: id,
+        email: localStorage.getItem('email'),
+        password: localStorage.getItem('password')
+      },
+      success: function(s) {
+        document.getElementById(`fullComment${index}`).innerHTML = ``
+        document.getElementById(`fullComment${index}`).style.marginTop = `0`
+      },
+      error: function(e) {}
+    })
+  }
+  function openResponse(id, id2) {
+    if (!account) alert(`Faça login para responder algum comentário!`)
+    document.getElementById(`responseInput${id}`).innerHTML = `<div style="display: flex; flex-direction: row; margin-top: 1vh;"><textarea class="comments" id="comments${id}" rows="4" placeholder="Faça uma resposta para este comentário!" style="width: 90%; background: rgba(10,10,10); padding: 1vh; font-size: 2vh; border: 0.1vh solid red; border-radius: 1vh; color: white"></textarea><i id="emojis" style="margin-left: 2vh; margin-top: 1vh; cursor: pointer; font-size: 4vh; color: gray; background: transparent; border: none;" class="colorRed fad fa-grin-stars"></i></div><div style="margin-top: 2vh; width: 90%; display: flex; position: relative;"><a id="buttonComment${id}" onclick="responseComment('${id}','${id2}')" class="backgroundRed" style="cursor: pointer; font-size: 2vh; font-weight: 800; color: white; background: red; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Responder</a><a onclick="closeResponse('${id}')" class="colorRed" style="cursor: pointer; font-size: 2vh; font-weight: 800; color: white; padding-inline: 2vh; padding-block: 1vh; border-radius: 1vh">Fechar</a><div style="display: flex; position: absolute; right: 2%; top: 0%;"><div id="spoiler${id}S" onclick="inputChecked('spoiler${id}')" class="slider"><div id="spoiler${id}B" class="sliderB"></div><input name='spoiler${id}' id="spoiler${id}" value='false' type='hidden'></div><a class="font-3" style="margin-left: 0.8vh; margin-top: 0.35vh; font-size: 2.3vh">Spoiler?</a></div></div>`
+  }
+  function closeResponse(id) {
+    document.getElementById(`responseInput${id}`).innerHTML = ``
+  }
+  function responseComment(id, id2) {
+    if (account) {
+      if (document.getElementById(`comments${id}`).value && document.getElementById(`comments${id}`).value.length >= 5 && document.getElementById(`comments${id}`).value.length <= 1000) {
+        if (commentActive) return;
+        commentActive = true
+        document.getElementById(`buttonComment${id}`).innerHTML = "Aguarde..."
+        $.ajax({ method: "post", url: `/responseComment/`,
+          data: {
+            anime: "<%=anime.id%>",
+            email: localStorage.getItem('email'),
+            password: localStorage.getItem('password'),
+            commentID: id2,
+            comment: document.getElementById(`comments${id}`).value,
+            spoiler: document.getElementById(`spoiler${id}`).value == "true" ? true : false,
+          },
+          success: function(s) {
+            document.getElementById(`comments${id}`).value = ""
+            document.getElementById(`buttonComment${id}`).innerHTML = "Comentar"
+            window.location.reload()
+          },
+          error: function(e) { alert(`Erro...`); window.location.reload() }
+        })
+      } else alert("O seu comentário deve ter entre 5 a 1000 caracteres!")
+    } else alert("Faça login antes de fazer um comentário!")
+  }
+  function deleteResponse(commentID, responseID, comment) {
+    $.ajax({ method: "post", url: `/deleteResponse`,
+      data: {
+        anime: "<%=anime.id%>",
+        email: localStorage.getItem('email'),
+        password: localStorage.getItem('password'),
+        responseID: responseID,
+        commentID: commentID,
+      },
+      success: function(s) {
+        document.getElementById(`${comment}`).innerHTML = ``
+        document.getElementById(`${comment}`).style.marginTop = `0`
+      },
+      error: function(e) {}
+    })
+  }
+  var likeP = false
+  function like() {
+    if (likeP) return;
+    likeP = true
+    if (localStorage.getItem('<%=anime.id%>-dislike') == "true") dislike();
+    if (localStorage.getItem('<%=anime.id%>-like') == "true") {
+      localStorage.setItem('<%=anime.id%>-like', "false")
+    } else {
+      localStorage.setItem('<%=anime.id%>-like', "true")
+    }
+    $.ajax({ method: "post", url: `/like/`, data: { anime: "<%=anime.id%>", remove: localStorage.getItem('<%=anime.id%>-like') },
+      success: function(s) {
+        likeP = false
+        if (localStorage.getItem('<%=anime.id%>-like') == "true") {
+          document.getElementById('like').innerHTML = Number(document.getElementById('like').innerHTML)+1
+          document.getElementById('like2').style.color = "red"
+        } else {
+          document.getElementById('like').innerHTML = Number(document.getElementById('like').innerHTML)-1
+          document.getElementById('like2').style.color = "white"
+        }
+      },
+      error: function(e) { likeP = false }
+    });
+  }
+  var dislikeP = false
+  function dislike() {
+    if (dislikeP) return;
+    dislikeP = true
+    if (localStorage.getItem('<%=anime.id%>-like') == "true") like();
+    if (localStorage.getItem('<%=anime.id%>-dislike') == "true") {
+      localStorage.setItem('<%=anime.id%>-dislike', "false")
+    } else {
+      localStorage.setItem('<%=anime.id%>-dislike', "true")
+    }
+    $.ajax({ method: "post", url: `/dislike/`, data: { anime: "<%=anime.id%>", remove: localStorage.getItem('<%=anime.id%>-dislike') },
+      success: function(s) {
+        dislikeP = false
+        if (localStorage.getItem('<%=anime.id%>-dislike') == "true") {
+          document.getElementById('dislike').innerHTML = Number(document.getElementById('dislike').innerHTML)+1
+          document.getElementById('dislike2').style.color = "red"
+        } else {
+          document.getElementById('dislike').innerHTML = Number(document.getElementById('dislike').innerHTML)-1
+          document.getElementById('dislike2').style.color = "white"
+        }
+      },
+      error: function(e) { dislikeP = false }
+    });
+  }
+  function loadPopulares() {
+    $.ajax({ method: "post", url: `/loadMainPage`,
+      success: function(s) {
+        document.getElementById('loadPopulares').style.display = `none`
+        if (s && s.tops && s.tops.length > 0) {
+            s.tops.forEach((anime, index)=>{ if (index < 6) document.getElementById('tops').innerHTML += `<div onclick="location.href = '/anime/${anime.url}'" class="calendarMain" style="cursor: pointer; margin-inline: 4%; display: flex; width: 92%; height: 12vh; background: rgba(10,10,10); margin-block: 1vh; border-radius: 0.8vh;"><div style="width: 20%; height: 10vh; margin-top:1vh; margin-left: 1vh; background: url('${anime.img}'); background-size: cover; background-position: center; border-radius: 0.6vh;"><div style="background: linear-gradient(to bottom,rgba(10,10,10, 1) 0%,rgba(10,10,10, 0.1) 10%,rgba(10,10,10, 0.1) 90%,rgba(10,10,10, 1) 100%);"></div></div><div style="position: relative; width: 100%; height: 100%;"><div style="position: absolute; bottom: 2vh; left: 2vh; right: 5vh"><a class="font-3" style="font-size: 2vh; font-weight: 600; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;">${anime.name}</a><a class="font-3" style="font-size: 1.8vh; color:red; font-weight: 600; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;">${anime.type}</a><a class="font-3" style="font-size: 1.9vh; color:gray; font-weight: 600; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 1;">${anime.eps}</a></div><div style="position: absolute; bottom: 1vh; right: 1vh;"><div style="font-size: 3.5vh; color: red"><i class="fad fa-play-circle"></i></div></div></div></div>` })
+        } else { document.getElementById('tops').innerHTML += `<div style="width: 100%; margin-top: 2%; text-align: center; color: red; font-size: 2vh"><a>Ocorreu algum erro ao carregar os animes...<br/>Reporte para nossa equipe!</a></div>` }
+      },
+      error: function(e) {}
+    });
+  }
+  (function () {
+    loadPopulares()
+    if (localStorage.getItem('<%=anime.id%>-dislike') == "true") {
+      document.getElementById('dislike2').style.color = "red"
+    }
+    if (localStorage.getItem('<%=anime.id%>-like') == "true") {
+      document.getElementById('like2').style.color = "red"
+    }
+  })();
+</script>

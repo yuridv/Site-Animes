@@ -1,0 +1,219 @@
+<div id="account" class="right1 top10" style="z-index:996; display: none; color: black; position: absolute; width: 40vh; height: 50vh; top: 9%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-bottom-right-radius: 3vh; border-bottom-left-radius: 3vh; border-top-left-radius: 3vh;">
+  <div class="font-5" style="text-align: center; font-size: 4vh; margin-top: 4vh; text-align: center"><a id="myname">My Name</a></div>
+  <div class="font-8" style="text-align: center; font-size: 2.5vh; text-align: center"><a id="myrole">Member</a></div>
+  <div style="margin-top: 2vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <div onclick="openMenu('myAccount')" class="buttonDash">
+      <div style="margin-top: 0.85vh"><i style="color: black" class="fad fa-user-astronaut"></i></div>
+      <a class="font-3" style="padding-left: 1.5vh">Minha Conta</a>
+    </div>
+    <div class="buttonDash" style="cursor: not-allowed">
+      <div style="margin-top: 0.85vh"><i style="color: black" class="fad fa-bells"></i></div>
+      <a class="font-3" style="padding-left: 1.5vh">Notificações</a>
+    </div>
+    <div class="buttonDash">
+      <div style="margin-top: 0.85vh"><i style="color: black" class="fad fa-heart"></i></div>
+      <a class="font-3" style="padding-left: 1.5vh">Listas de Animes</a>
+    </div>
+    <div class="buttonDash" style="cursor: not-allowed">
+      <div style="margin-top: 0.85vh"><i style="color: black" class="fad fa-cogs"></i></div>
+      <a class="font-3" style="padding-left: 1.5vh">Configurações</a>
+    </div>
+    <div onclick="logout()" class="buttonDash">
+      <div style="margin-top: 0.85vh"><i style="color: rgb(200,0,0)" class="fad fa-sign-out"></i></div>
+      <a class="font-3" style="padding-left: 1.5vh; color: rgb(200,0,0)">Sair</a>
+    </div>
+  </div>
+</div>
+
+<div id="myAccount" class="right1 top10" style="z-index:996; display: none; color: black; position: absolute; width: 40vh; height: 55vh; top: 9%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-bottom-right-radius: 3vh; border-bottom-left-radius: 3vh; border-top-left-radius: 3vh;">
+  <div class="textBanner">
+    <div id="viewBannerAccount" onclick="openDuoMenu('changeBannerAccount')" style="cursor: pointer; height: 15vh; width: 100%; background: black; background-size: cover; background-position: center; border-top-left-radius: 3vh;"></div>
+    <a class="textBanner2" onclick="openDuoMenu('changeBannerAccount')" style="opacity: 0; cursor: pointer; position: absolute; top: 12%; left: 50%; font-size: 1.5vh; font-weight: 700; color: white; text-shadow: 0.6vh 0.6vh 1.3vh rgb(0, 0, 0);">Mudar Banner</a>
+  </div>
+  <a id="roleAccount" class="font-8" style="position: absolute; top: 30%; right: 5%; font-size: 2vh; font-weight: 700; color: black;">Member</a>
+  <div style="position: absolute; top: 13.5%; left: 6%; height: 10vh; width: 10vh; border: 0.8vh solid rgba(167,167,167); border-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-radius: 10vh"></div>
+  <div class="textAvatar">
+    <img onclick="openDuoMenu('changeAvatarAccount')" id="viewAvatarAccount" src="https://pbs.twimg.com/profile_images/794107415876747264/g5fWe6Oh_400x400.jpg" style="cursor: pointer; position: absolute; top: 15%; left: 8%; display: block; margin-left: auto; margin-right: auto; width: 10vh; height: 10vh; border-radius: 10vh;">
+    <a class="textAvatar2" onclick="openDuoMenu('changeAvatarAccount')" style="opacity: 0; cursor: pointer; position: absolute; top: 22%; left: 8.5%; font-size: 1.5vh; font-weight: 700; color: white; text-shadow: 0.6vh 0.6vh 1.3vh rgb(0, 0, 0);">Mudar Avatar</a>
+  </div>
+  <div style="margin-top: 5vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Nome:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-user-astronaut"></i></div>
+      <input id="nameAccount" placeholder="Digite seu Nome" onkeyup="changeSave('name',this)" style="width: auto; font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+      <div style="display: flex; font-size: 2.3vh; margin-left: 0; width: 20vh;">
+        <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-hashtag"></i></div>
+        <input id="idAccount" disabled placeholder="My ID" style="cursor: no-drop; font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+      </div>
+    </div>
+    <a style="margin-top:2vh; font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Sobre Mim:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-user-tie"></i></div>
+      <input id="aboutAccount" placeholder="Sobre Mim" onkeyup="changeSave('about',this)" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+    <a style="margin-top:2vh; font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Membro Desde:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-calendar-alt"></i></div>
+      <input id="dateAccount" value="2022" disabled style="cursor: no-drop; font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+    <div style="text-align: right; margin-top: 1.5vh;"><a onclick="closeMenu(); openLogin('changePass')" class="colorRed" style="cursor: pointer; font-size: 1.6vh; font-weight: 600; margin-left: 1vh; color: gray">Deseja mudar sua senha?<a></div>
+  </div>
+  <div onclick="saveAccount()" class="buttonLogin" style="margin-top: 1vh"><a id="saveAccountButton" style="font-size: 2.5vh; color: white; font-weight: 600;">Salvar</a></div>
+</div>
+<div id="changeAvatarAccount" class="right1 top80 width80 left10" style="z-index:996; display: none; color: black; position: absolute; width: 40%; left: 30%; height: 10%; top: 30%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-radius: 3vh;">
+  <div style="position: absolute; right: 1%; top: 5%; margin-right: 3vh;"><i onclick="closeDuoMenu('changeAvatarAccount')" class="fad fa-times colorRed" style="cursor: pointer; font-size: 3vh; margin-top:0.5vh;"></i></div>
+  <div style="margin-top: 2vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="margin-top:0vh; font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Mudar Avatar:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-user-tie"></i></div>
+      <input id="avatarAccount" onkeyup="changeImg('avatar', this)" onchange="changeSave('avatar', this)" placeholder="Link Invalido..." style="cursor: font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+</div>
+<div id="changeBannerAccount" class="right1 top80 width80 left10" style="z-index:996; display: none; color: black; position: absolute; width: 40%; left: 30%; height: 10%; top: 30%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-radius: 3vh;">
+  <div style="position: absolute; right: 1%; top: 5%; margin-right: 3vh;"><i onclick="closeDuoMenu('changeBannerAccount')" class="fad fa-times colorRed" style="cursor: pointer; font-size: 3vh; margin-top:0.5vh;"></i></div>
+  <div style="margin-top: 2vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="margin-top:0vh; font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Mudar Banner:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-images"></i></div>
+      <input id="bannerAccount" onkeyup="changeImg('banner', this)" onchange="changeSave('banner', this)" placeholder="Link ou Cor Invalida..." style="cursor: font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+</div>
+    
+<div id="settings" class="right1 top10" style="z-index:996; display: none; color: black; position: absolute; width: 45vh; height: 37vh; top: 9%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-bottom-right-radius: 3vh; border-bottom-left-radius: 3vh; border-top-left-radius: 3vh;">
+  <div class="font-5" style="text-align: center; font-size: 4vh; margin-top: 4vh; text-align: center"><a>Configuraçoes:</a></div>
+  <div style="margin-top: 4vh; margin-inline: 3vh; display: flex; flex-direction: column">
+    <div style="display: flex;">
+      <div id="skipIntroS" onclick="inputChecked('skipIntro')" class="slider">
+        <div id="skipIntroB" class="sliderB"></div>
+        <input name='skipIntro' id="skipIntro" value='false' type='hidden'>
+      </div>
+      <a class="font-3" style="margin-left: 0.8vh; margin-top: 0.35vh; font-size: 2.3vh">Pular intros automatico</a>
+    </div>
+    <div style="display: flex; margin-top: 2vh">
+      <div id="skipEpS" onclick="inputChecked('skipEp')" class="slider">
+        <div id="skipEpB" class="sliderB"></div>
+        <input name='skipEp' id="skipEp" value='false' type='hidden'>
+      </div>
+      <a class="font-3" style="margin-left: 0.8vh; margin-top: 0.35vh; font-size: 2.3vh">Pular episódios automatico</a>
+    </div>
+    <div style="text-align: right; margin-top: 1.5vh;"><a onclick="closeMenu(); openLogin('changePass')" class="colorRed" style="cursor: pointer; font-size: 1.6vh; font-weight: 600; margin-left: 1vh; color: gray">Deseja mudar sua senha?<a></div>
+    <div onclick="saveAccount()" class="buttonLogin" style="margin-top: 1vh"><a id="saveSettingsButton" style="font-size: 2.5vh; color: white; font-weight: 600;">Salvar</a></div>
+  </div>
+</div>
+
+<div id="closeAccount" class="right3 top8-5" style="z-index:997; display: none; position: absolute; top: 8%; right: 6vh; color: black">
+  <i onclick="closeMenu()" class="fad fa-times colorRed" style="cursor: pointer; font-size: 3.8vh; margin-left: 2vh; margin-top:3.4vh;"></i>
+</div>
+    
+<script>
+  var blockMenu = false;
+  function openMenu(menu) {
+    if (blockMenu) return;
+    blockMenu = true
+    setTimeout(function() { blockMenu = false }, 900)
+    if (menu !== "account") $(`#account`).fadeOut(400)
+    if (menu !== "myAccount") { $(`#myAccount`).fadeOut(400); $(`#changeAvatarAccount`).fadeOut(400); $(`#changeBannerAccount`).fadeOut(400) }
+    if (menu !== "settings") $(`#settings`).fadeOut(400)
+    $(`#closeAccount`).fadeIn(800)
+    $(`#${menu}`).fadeIn(800)
+  }
+  function closeMenu() {
+    if (blockMenu) return;
+    $(`#account`).fadeOut(400)
+    $(`#myAccount`).fadeOut(400)
+    $(`#changeAvatarAccount`).fadeOut(400)
+    $(`#changeBannerAccount`).fadeOut(400)
+    $(`#settings`).fadeOut(400)
+    $(`#closeAccount`).fadeOut(400)
+  }
+  function openDuoMenu(menu) {
+    if (menu !== "changeAvatarAccount") $(`#changeAvatarAccount`).fadeOut(400);
+    if (menu !== "changeBannerAccount") $(`#changeBannerAccount`).fadeOut(400);
+    $(`#${menu}`).fadeIn(800)
+  }
+  function closeDuoMenu(menu) {
+    $(`#${menu}`).fadeOut(400)
+  }
+</script>
+    
+<script>
+  var save = false
+  var blockSave = false
+  function inputChecked(button) {
+    if (!account && !account.user) return;
+    if (!save) save = {}
+    if (document.getElementById(button).value == 'true') {
+      document.getElementById(button).value = 'false'
+      document.getElementById(button+"B").classList.remove('sliderBC')
+      document.getElementById(button+"S").classList.remove('sliderC')
+      save[button] = 'false'
+    } else {
+      document.getElementById(button).value = 'true'
+      document.getElementById(button+"B").classList.add('sliderBC')
+      document.getElementById(button+"S").classList.add('sliderC')
+      save[button] = 'true'
+    }
+  }
+  function changeSave(menu, input) {
+    if (!account && !account.user) return;
+    if (!save) save = {}
+    if (menu == "avatar" && !/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|gif|png|bmp)$/i.test(input.value)) return input.value = ""
+    if (menu == "avatar" && account.user.role == "Membro" && !/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|png|bmp)$/i.test(input.value)) return input.value = "GIF's é exclusivo para PREMIUM";
+    if (menu == "banner" && (!/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|gif|png|bmp)$/i.test(input.value) && (input.value.length < 7 || !input.value.startsWith("#")))) return input.value = ""
+    if (menu == "banner" && account.user.role == "Membro" && (!/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|png|bmp)$/i.test(input.value) && (input.value.length < 7 || !input.value.startsWith("#")))) return input.value = "GIF's é exclusivo para PREMIUM";
+    if (menu == "name") document.getElementById("myname").innerHTML = input.value
+    save[menu] = input.value
+  }
+  function changeImg(menu, input) {
+    if (!account && !account.user) return;
+    if (!save) save = {}
+    if (menu == "avatar") {
+      if (!/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|gif|png|bmp)$/i.test(input.value)) return;
+      if ((account.user.role == "Membro") && !/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|png|bmp)$/i.test(input.value)) return input.value = "GIF's é exclusivo para PREMIUM";
+      document.getElementById("viewAvatarAccount").src = `${input.value}`
+      document.getElementById("profile").innerHTML = `<div style="margin-right: 4vh; margin-bottom: 2.5vh; margin-top: 2.8vh; border-left: 0.3vh solid white; padding-left: 2vh"><img onclick="openAccounts('account')" src="${input.value}" style="width: 5vh; height: 5vh; border-radius: 5vh; cursor: pointer"></div>`
+      document.getElementById("profile2").innerHTML = `<div style="margin-right: 2vh; margin-bottom: 2.5vh; margin-top: -0.5vh; border-left: 0.3vh solid white; padding-left: 2vh"><img onclick="openAccounts('account')" src="${input.value}" style="width: 4.5vh; height: 4.5vh; border-radius: 5vh; cursor: pointer"></div>`
+      $("#changeAvatarAccount").fadeOut(800);
+      save[menu] = input.value
+      input.value = ""
+    } else if (menu == "banner"){
+      if ((!/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|gif|png|bmp)$/i.test(input.value) && (input.value.length < 7 || !input.value.startsWith("#")))) return;
+      if ((account.user.role == "Membro") && !/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|png|bmp)$/i.test(input.value)) return input.value = "GIF's é exclusivo para PREMIUM";
+      if (/^(https?:\/\/)((([-a-z0-9]{1,})?(-?)+[-a-z0-9]{1,})(\.))+([a-z]{1,63})\/((([a-z0-9._\-~#%])+\/)+)?([a-z0-9._\-~#%]+)\.(jpg|jpeg|gif|png|bmp)$/i.test(input.value)) {
+        document.getElementById("viewBannerAccount").style.background = `url('${input.value}')`
+        document.getElementById("viewBannerAccount").style.backgroundSize = `cover`
+        document.getElementById("viewBannerAccount").style.backgroundPosition = `center`
+      }
+      if (input.value.length == 7 && input.value.startsWith("#")) document.getElementById("viewBannerAccount").style.background = `${input.value}`
+      $("#changeBannerAccount").fadeOut(800);
+      save[menu] = input.value
+      input.value = ""
+    }
+  }
+  function saveAccount() {
+  if (!save || blockSave || !account) return;
+    document.getElementById("saveAccountButton").innerHTML = "Aguarde..."
+    document.getElementById("saveSettingsButton").innerHTML = "Aguarde..."
+    blockSave = true
+    $.ajax({
+    method: "post",
+    url: `/account`,
+    data: { type: "changeAccount", date: save, email: localStorage.getItem('email'), password: localStorage.getItem('password') },
+    success: function(e) {
+        account = e
+        blockSave = false;
+        document.getElementById("saveAccountButton").innerHTML = "Salvar"
+        document.getElementById("saveSettingsButton").innerHTML = "Salvar"
+        openAccounts('account')
+      },
+      error: function(e) {
+        alert(e.responseText)
+        blockSave = false
+        document.getElementById("saveAccountButton").innerHTML = "Salvar"
+        document.getElementById("saveSettingsButton").innerHTML = "Salvar"
+      }
+    });
+  }
+</script>

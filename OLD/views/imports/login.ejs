@@ -1,0 +1,243 @@
+<div id="login" class="right1 top10" style="z-index:996; display: none; color: black; position: absolute; width: 40vh; height: 55vh; top: 9%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-bottom-right-radius: 3vh; border-bottom-left-radius: 3vh; border-top-left-radius: 3vh;">
+  <div class="font-5" style="text-align: center; font-size: 4vh; margin-top: 4vh"><a>Entrar</a></div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Email:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-envelope-open-text"></i></div>
+      <input id="email" type="email" placeholder="Digite seu Email" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Password:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-lock-alt"></i></div>
+      <input id="password" type="password" placeholder="Digite sua Senha" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div style="text-align: right; margin-top: 1.5vh; margin-right: 5vh"><a onclick="openLogin('changePass')" class="colorRed" style="cursor: pointer; font-size: 1.6vh; font-weight: 600; margin-left: 1vh; color: gray">Esqueceu a sua senha?<a></div>
+  <div onclick="postLogin('login', 'Fazer Login')" class="buttonLogin"><a id="loginButton" style="font-size: 2.5vh; color: white; font-weight: 600;">Fazer Login</a></div>
+  <div onclick="loginDiscord()" class="buttonDiscord"><a style="font-size: 2.5vh; color: white; font-weight: 600;"><i class="fab fa-discord"></i> Logar com Discord</a></div>
+  <div style="text-align: center; margin-top: 4vh"><a class="colorRed" onclick="openLogin('register')" style="cursor: pointer; font-size: 1.8vh; color: gray; font-weight: 600">Criar Conta</a></div>
+</div>
+    
+<div id="register" class="right1 top10" style="z-index:996; display: none; color: black; position: absolute; width: 40vh; height: 60vh; top: 9%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-bottom-right-radius: 3vh; border-bottom-left-radius: 3vh; border-top-left-radius: 3vh;">
+  <div class="font-5" style="text-align: center; font-size: 4vh; margin-top: 4vh"><a>Criar Conta</a></div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Name:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-user-astronaut"></i></div>
+      <input id="name" placeholder="Digite seu Nome" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Email:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-envelope-open-text"></i></div>
+      <input id="emailR" type="email" placeholder="Digite seu Email" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Password:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-lock-alt"></i></div>
+      <input id="passwordR" type="password" placeholder="Digite sua Senha" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Repeat Password:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-lock-alt"></i></div>
+      <input id="passwordRR" type="password" placeholder="Repita sua Senha" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div onclick="postLogin('register', 'Criar Conta')" class="buttonLogin"><a id="registerButton" style="font-size: 2.5vh; color: white; font-weight: 600;">Criar Conta</a></div>
+  <div style="text-align: center; margin-top: 3vh"><a class="colorRed" onclick="openLogin('login')" style="cursor: pointer; font-size: 1.8vh; color: gray; font-weight: 600">Entrar</a></div>
+</div>
+
+<div id="changePass" class="right1 top10" style="z-index:996; display: none; color: black; position: absolute; width: 40vh; height: 46vh; top: 9%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-bottom-right-radius: 3vh; border-bottom-left-radius: 3vh; border-top-left-radius: 3vh;">
+  <div class="font-5" style="text-align: center; font-size: 4vh; margin-top: 4vh"><a>Mudar Senha</a></div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Email:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-envelope-open-text"></i></div>
+      <input id="emailC" type="email" placeholder="Digite seu Email" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">New Password:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-lock-alt"></i></div>
+      <input id="passwordC" type="password" placeholder="Digite sua Senha" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Repeat Password:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-lock-alt"></i></div>
+      <input id="passwordRC" type="password" placeholder="Repita sua Senha" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div onclick="postLogin('changePass', 'Mudar Senha')" class="buttonLogin"><a id="changePassButton" style="font-size: 2.5vh; color: white; font-weight: 600;">Mudar Senha</a></div>
+</div>
+    
+<div id="verifyAccount" class="right1 top10" style="z-index:996; display: none; color: black; position: absolute; width: 40vh; height: 35vh; top: 9%; right: 4vh; background-color: rgba(167,167,167); background-image: url('https://cdn.glitch.global/df72e925-5da1-4a58-bb86-25b4e6d5bc73/background-white.png?v=1641440672970'); border-bottom-right-radius: 3vh; border-bottom-left-radius: 3vh; border-top-left-radius: 3vh;">
+  <div class="font-5" style="text-align: center; font-size: 4vh; margin-top: 4vh"><a>Verificação</a></div>
+  <div style="text-align: center; font-size: 1.5vh; margin-top: 1vh; margin-inline:4vh"><a>Um codigo foi enviado para seu email...<br/>Verifique sua lixeira caso não encontre!</a></div>
+  <div style="margin-top: 3vh; margin-inline: 4vh; display: flex; flex-direction: column">
+    <a style="font-size: 1.6vh; font-weight: 600; margin-left: 1vh">Code:</a>
+    <div style="display: flex; border-bottom: 0.3vh solid gray; font-size: 2.3vh;">
+      <div style="margin-top: 0.8vh"><i style="color: gray" class="fad fa-lock-alt"></i></div>
+      <input id="code" placeholder="Digite o Codigo" style="font-size: 2vh; padding-left: 1vh; font-weight: 500; background: transparent; border: none; width: 100%; height: 4vh;">
+    </div>
+  </div>
+  <div onclick="postLogin('verifyAccount', 'Verificar')" class="buttonLogin" style="margin-top: 1vh"><a id="verifyAccountButton" style="font-size: 2.5vh; color: white; font-weight: 600;">Verificar</a></div>
+</div>
+<div id="closeLogin" class="right3 top8-5" style="z-index:996; display: none; position: absolute; top: 8%; right: 6vh; color: black">
+  <i onclick="closeLogin()" class="fad fa-times colorRed" style="cursor: pointer; font-size: 3.8vh; margin-left: 2vh; margin-top:3.4vh;"></i>
+</div>
+<script>
+  var blockLogin = false;
+  var changePass = false;
+  function openLogin(menu) {
+    if (blockLogin) return;
+    blockLogin = true
+    setTimeout(function() { blockLogin = false }, 900)
+    if (menu !== "login") $(`#login`).fadeOut(400)
+    if (menu !== "register") $(`#register`).fadeOut(400)
+    if (menu !== "changePass") $(`#changePass`).fadeOut(400)
+    if (menu !== "verifyAccount") $(`#verifyAccount`).fadeOut(400)
+    $(`#closeLogin`).fadeIn(800)
+    $(`#${menu}`).fadeIn(800)
+  }
+  function closeLogin() {
+    if (blockLogin) return;
+    $(`#login`).fadeOut(400)
+    $(`#register`).fadeOut(400)
+    $(`#changePass`).fadeOut(400)
+    $(`#verifyAccount`).fadeOut(400)
+    $(`#closeLogin`).fadeOut(400)
+  }
+  function logout() {
+    localStorage.setItem('email', "");
+    localStorage.setItem('password', "");
+    account = false;
+    window.location.href = '/logout'
+  }
+  function loginDiscord() { window.location.href = '/login' }
+  function loadLogin() {
+    if (!account) return;
+    closeLogin()
+    document.getElementById("profile").innerHTML = `<div style="margin-right: 4vh; margin-bottom: 2.5vh; margin-top: 2.8vh; border-left: 0.3vh solid white; padding-left: 2vh"><img onclick="openAccounts('account')" src="${account.user.avatar}" style="width: 5vh; height: 5vh; border-radius: 5vh; cursor: pointer"></div>`
+    document.getElementById("profile2").innerHTML = `<div style="margin-right: 2vh; margin-bottom: 2.5vh; margin-top: -0.5vh; border-left: 0.3vh solid white; padding-left: 2vh"><img onclick="openAccounts('account')" src="${account.user.avatar}" style="width: 4.5vh; height: 4.5vh; border-radius: 5vh; cursor: pointer"></div>`
+    document.getElementById("myname").innerHTML = `${account.user.name}`
+    document.getElementById("myrole").innerHTML = `${account.user.role}`
+    document.getElementById("roleAccount").innerHTML = `${account.user.role}`
+    document.getElementById("idAccount").value = `${account.index}`
+    document.getElementById("nameAccount").value = `${account.user.name}`
+    document.getElementById("aboutAccount").value = `${account.user.about}`
+    document.getElementById("viewAvatarAccount").src = `${account.user.avatar}`
+    if (account.user.banner) document.getElementById("viewBannerAccount").style.background = `url('${account.user.banner}')`
+    document.getElementById("viewBannerAccount").style.backgroundSize = `cover`
+    document.getElementById("viewBannerAccount").style.backgroundPosition = `center`
+    if (account.user.banner && account.user.banner.length == 7 && account.user.banner.startsWith("#")) document.getElementById("viewBannerAccount").style.background = `${account.user.banner}`
+    document.getElementById("dateAccount").value = `${account.user.date}`
+    //if (account.user.skipIntro) inputChecked("skipIntro")
+    //if (account.user.skipEp) inputChecked("skipEp")
+    
+    if (window.location.pathname.split('/')[1] == "anime") {
+      document.getElementById("comments").placeholder = "Faça um comentário sobre o anime!"
+      document.getElementById("comments").style.cursor = "text"
+      document.getElementById("comments").disabled = false
+      document.getElementById("buttonComment").style.cursor = "pointer"
+      document.getElementById("emojisDisabled").style.cursor = "pointer"
+      document.getElementById("emojisDisabled").id = "emojis"
+      
+    }
+  }
+  function postLogin(menu, buttonName) {
+    if (blockLogin) return;
+    var date = false
+    if (menu == "login") {
+      if (!document.getElementById("email").value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) return alert("O email está invalido!")
+      if (document.getElementById("password").value.length < 8) return alert("A senha está invalida!")
+      date = { type: "login", email: document.getElementById("email").value, password: document.getElementById("password").value }
+    } else if (menu == "register") {
+      if (!document.getElementById("name").value) return alert("O nome é invalido!")
+      if (!document.getElementById("emailR").value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) return alert("O email está invalido!")
+      if (document.getElementById("passwordR").value.length < 8) return alert("Sua senha dever ter no minimo 8 caracteres!")
+      if (document.getElementById("passwordR").value !== document.getElementById("passwordRR").value) return alert("As senhas não são iguais!")
+      date = { type: "register", email: document.getElementById("emailR").value, name: document.getElementById("name").value }
+    } else if (menu == "verifyAccount") {
+      if (changePass) {
+        if (!document.getElementById("emailC").value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) return alert("O email está invalido!")
+        if (document.getElementById("passwordC").value.length < 8) return alert("Sua senha dever ter no minimo 8 caracteres!")
+        if (document.getElementById("passwordC").value !== document.getElementById("passwordRC").value) return alert("As senhas não são iguais!")
+        if (!document.getElementById("code").value) return alert("O codigo está invalido!")
+        date = { type: "changePass", email: document.getElementById("emailC").value, password: document.getElementById("passwordC").value, code: document.getElementById("code").value }
+      } else {
+        if (!document.getElementById("emailR").value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) return alert("O email está invalido!")
+        if (document.getElementById("passwordR").value.length < 8) return alert("Sua senha dever ter no minimo 8 caracteres!")
+        if (!document.getElementById("name").value) return alert("O nome é invalido!")
+        if (!document.getElementById("code").value) return alert("O codigo está invalido!")
+        date = { type: "verify", email: document.getElementById("emailR").value, password: document.getElementById("passwordR").value, code: document.getElementById("code").value, name: document.getElementById("name").value }
+      }
+    } else if (menu == "changePass") {
+      if (!document.getElementById("emailC").value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) return alert("O email está invalido!")
+      if (document.getElementById("passwordC").value.length < 8) return alert("Sua senha dever ter no minimo 8 caracteres!")
+      if (document.getElementById("passwordC").value !== document.getElementById("passwordRC").value) return alert("As senhas não são iguais!")
+      changePass = true;
+      date = { type: "register", changePass: true, email: document.getElementById("emailC").value }
+    } else return;
+    if (!date) return alert("Algo está errado...")
+    blockLogin = true;
+    document.getElementById(`${menu}Button`).innerHTML = "Aguarde...";
+    $.ajax({
+      method: "post",
+      url: `/account`,
+      data: date,
+      success: function(e) {
+        blockLogin = false
+        document.getElementById(`${menu}Button`).innerHTML = buttonName;
+        if (menu == "login" || menu == "verifyAccount") {
+          changePass = false;
+          account = e;
+          localStorage.setItem('email', account.user._id);
+          localStorage.setItem('password', account.user.password);
+          loadLogin()
+        } else if (menu == "register" || menu == "changePass") openLogin('verifyAccount')
+      },
+      error: function(e) {
+        document.getElementById(`${menu}Button`).innerHTML = buttonName;
+        alert(e.responseText);
+        blockLogin = false;
+      }
+    })
+  }(function () {
+    if ('<%=user%>' && '<%=user%>' !== "false") {
+      $.ajax({
+        method: "post",
+        url: `/account`,
+        data: { type: "login", email: '<%=user.id%>', password: 'discord' },
+        success: function(e) {
+          account = e
+          localStorage.setItem('email', "<%=user.id%>")
+          localStorage.setItem('password', "discord")
+          loadLogin()
+        },
+        error: function(e) {}
+      }); 
+    } else if (localStorage.getItem('email') && localStorage.getItem('password')) {
+      $.ajax({
+        method: "post",
+        url: `/account`,
+        data: { type: "login", email: localStorage.getItem('email'), password: localStorage.getItem('password') },
+        success: function(e) {
+          account = e
+          loadLogin()
+        },
+        error: function(e) {}
+      });
+    }
+  })();
+</script>
+<% include accounts %>

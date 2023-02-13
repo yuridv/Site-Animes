@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="Em Construção..."/>
+    <meta name="author" content="Yuri Eduardo"/>
+    <title>Animes Star™</title>
+    <link type="/image/icon" href="public/images/caixa.gif" rel="shortcut icon"/>
+
+    <link href="/public/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
+
+
+    <script src="/public/js/jquery.min.js"></script>
+    <script>
+      var urlAPI = 'https://api.concredito.com.br'
+      var urlLocal = 'http://localhost:3000'
+      var apiURL = urlLocal
+    </script>
+  </head>
+  <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
+  <body>
+    <div style="width: 100vw; height: 100vh; background-image: linear-gradient(to bottom right, #353535, #1f1f1f); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <img src="public/images/loading.gif" style="width: 7vw; height: 7vw">
+      <a class="font-1" style="font-size: 2.8vh; letter-spacing: 0.1vw; margin-top: 3vh; color: white">Carregando<span style="color:red; margin-left: 0.1vw">...</span></a>
+    </div>
+    <script>
+      function load() {
+        var url = window.location.pathname.split('/')
+        if (url[2]) return $(document.body).load(`/views/${url[1]}/${url[2]}.html`)
+        if (url[1]) return $(document.body).load(`/views/${url[1]}.html`)
+        return $(document.body).load(`/views/video.html`)
+      }(function () { load() })()
+    </script>
+  </body>
+</DOCTYPE html>
