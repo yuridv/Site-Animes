@@ -1,60 +1,21 @@
-<div class="invisible-android" style="position: fixed; width: 95vw; height: 10vh; padding-inline: 2.5vw; background: rgba(0,0,0,0.05); text-shadow: 0.6vh 0.6vh 1.3vh rgb(0, 0, 0); display: flex">
-  <div style="width: 60%; height: 100%; align-items: center; display: flex; flex-direction: row;">
-    <a href="/" class="font-1" style="text-decoration: none; font-size: 5.8vh; margin-top: 0.8vh; color: red">Animes <span style="color: white">STAR</span></a>
-    <a href="/animes" class="navbar-item" style="text-decoration: none; color: white; font-size: 2.4vh; font-weight: 600; margin-left: 3vw; margin-top: 1.5vh">Animes</a>
-    <a href="/filmes" class="navbar-item" style="text-decoration: none; color: white; font-size: 2.4vh; font-weight: 600; margin-left: 2.1vw; margin-top: 1.5vh">Filmes</a>
-    <a href="/generos" class="navbar-item" style="text-decoration: none; color: white; font-size: 2.4vh; font-weight: 600; margin-left: 2.1vw; margin-top: 1.5vh">Gêneros</a>
-    <a href="/calendario" class="navbar-item" style="text-decoration: none; color: white; font-size: 2.4vh; font-weight: 600; margin-left: 2.1vw; margin-top: 1.5vh">Calendário</a>
-    <a href="/generos" class="navbar-item" style="text-decoration: none; color: orange; font-size: 2.4vh; font-weight: 600; margin-left: 2.1vw; margin-top: 1.5vh">Premium<i class="fa-solid fa-crown" style="font-size: 1.7vh; margin-left: 1vh"></i></a>
+<div class="navbar">
+  <div class="navbar-logo">
+    <i class="fa-duotone fa-bars"></i>
+    <a href="/"><span>Animes</span> STAR</a>
   </div>
-  <div style="width: 40%; height: 100%; align-items: center; display: flex; flex-direction: row; justify-content: right">
-    <i class="navbar-item fa-duotone fa-magnifying-glass" style="cursor: pointer; font-size: 3.2vh; font-weight: 600; margin-right: 1.5vw; margin-top: 1vh;"></i>
-    <div style="width: 0.1vh; height: 4vh; background: white; margin-right: 1vw; margin-top: 1vh;"></div>
-    <i class="navbar-item fad fa-user-astronaut" style="cursor: pointer; font-size: 3.8vh; font-weight: 600; margin-top: 1vh"></i>
+  <div class="navbar-items">
+    <a href="/animes">Animes</a>
+    <a href="/filmes">Filmes</a>
+    <a href="/generos">Gêneros</a>
+    <a href="/calendario">Calendário</a>
+    <a href="/premium"><span>Premium <i class="fa-solid fa-crown"></i></span></a>
+  </div>
+  <div class="navbar-icons">
+    <search>
+      <input placeholder="Pesquise algum anime...">
+      <i class="fa-duotone fa-magnifying-glass"></i>
+    </search>
+    <divisor></divisor>
+    <i class="fad fa-user-astronaut"></i>
   </div>
 </div>
-
-<!--  
-
-<nav class="invisibleAndroid" style="position: absolute; width: 100%; height: 10vh; max-height: 10vh; background: rgba(0,0,0,0.04); text-shadow: 0.6vh 0.6vh 1.3vh rgb(0, 0, 0); display: flex;">
-  <a href="/" class="font-11" style="cursor: pointer; font-size: 5.8vh; margin-top: 2vh; margin-left: 5vh; color: red; text-decoration: none">Animes <span style="color: white">STAR</span></a>
-  <a href="/animes" class="navbarColor" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-left: 6vh; margin-top: 4.2vh; text-decoration: none">Animes</a>
-  <a href="/filmes" class="navbarColor" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-left: 4vh; margin-top: 4.2vh; text-decoration: none">Filmes</a>
-  <a href="/generos" class="navbarColor" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-left: 4vh; margin-top: 4.2vh; text-decoration: none">Gêneros</a>
-  <a href="/calendario" class="navbarColor" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-left: 4vh; margin-top: 4.2vh; text-decoration: none">Calendário</a>
-  <a href="/premium" class="navbarColor" style="color: orange; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-left: 4vh; margin-top: 4.2vh; text-decoration: none">Premium<i class="fad fa-crown" style="font-size: 1.7vh; margin-left: 1vh"></i></a>
-  <div style="margin-left: auto; display: flex">
-    <div id="profile">
-      <div style="margin-right: 4vh; margin-bottom: 2.5vh; margin-top: 3.2vh; border-left: 0.3vh solid white; padding-left: 2vh">
-        <i onclick="openAccounts('account')" class="fad fa-user-astronaut navbarColor2" style="cursor: pointer; font-size: 3.8vh; font-weight: 600;"></i>
-      </div>
-    </div>
-  </div>
-</nav>
-<nav id="navbarMenu" style="z-index:995; display: none; text-shadow: 0.6vh 0.6vh 1.3vh rgb(0, 0, 0); position: fixed; width: 100%; height: 100%; background: rgba(20,20,20,0.9)">
-  <div style="margin-inline: 5%; border: 0.2vh solid white; width: 85%; margin-top: 11vh; height: 80%; display: flex; flex-direction: column; padding-left: 5%;">
-    <a href="/animes" class="navbarColor2" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-top: 4.2vh; text-decoration: none">Animes</a>
-    <a href="/filmes" class="navbarColor2" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-top: 4.2vh; text-decoration: none">Filmes</a>
-    <a href="/generos" class="navbarColor2" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-top: 4.2vh; text-decoration: none">Gêneros</a>
-    <a href="/calendario" class="navbarColor2" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-top: 4.2vh; text-decoration: none">Calendário</a>
-    <a href="/premium" class="navbarColor2" style="color: white; cursor: pointer; font-size: 2.4vh; font-weight: 600; margin-top: 4.2vh; text-decoration: none">Premium</a>
-  </div>
-</nav>
-<nav id="navbarAndroid" class="visibleAndroid" style="z-index:999; text-shadow: 0.6vh 0.6vh 1.3vh rgb(0, 0, 0); position: absolute; width: 100%; height: 10vh; max-height: 10vh; background: rgba(0,0,0,0.04);">
-  <i id="openNavbar" onclick="openNavbar()" class="fad fa-bars" style="font-size: 3.8vh; margin-left: 2vh; margin-top:3.4vh"></i>
-  <i id="closeNavbar" onclick="closeNavbar()" class="fad fa-times" style="display: none; font-size: 3.8vh; margin-left: 2vh; margin-top:3.4vh;"></i>
-  <a href="/" class="font-11" style="margin-top:2.9vh; margin-left: 2vh; cursor: pointer; font-size: 4vh; color: red; text-decoration: none">Animes <span style="color: white">STAR</span></a>
-  <div style="margin-left: auto; display: flex; margin-top: 4vh;">
-    <div id="profile2"><div style="margin-right: 2vh; margin-bottom: 2.5vh; border-left: 0.3vh solid white; padding-left: 2vh"><i onclick="openAccounts('account')" class="fad fa-user-astronaut navbarColor2" style="cursor: pointer; font-size: 3.5vh; font-weight: 600;"></i></div></div>
-  </div>
-</nav>
-
-<div class="top3-2 right20" id="searchBarMenu" style="z-index:999; display: flex; flex-direction: column; position: absolute; min-height: 7vh;">
-  <div id="iconSearchBar" style="width: 100%; height: 5vh; text-align: right; border-radius: 1vh;"><i id="searchBarIgnore" onclick="openSearch()" class="fad fa-search navbarColor2" style="cursor: pointer; font-size: 3vh; font-weight: 600; margin-top: 0.8vh; padding-right: 1vh;"></i></div>
-  <div id="searchBar" style="display: none; background: rgba(255,255,255,0.2); width: 100%; height: 5vh; text-align: right; border-radius: 1vh;">
-    <input autocomplete="off" onkeyup="loadAnimesBar(this.value)" id="searchBarInput" style="height: 100%; font-size: 2.2vh; color: white; width: 80%; max-width: 80%; background: transparent; border: none" placeholder="Pesquise...">
-    <i onclick="search(document.getElementById('searchBarInput'))" id="searchBarIgnore" class="fad fa-search navbarColor2" style="cursor: pointer; font-size: 3vh; font-weight: 600; margin-top: 0.8vh; padding-right: 1vh;"></i>  
-  </div>
-  <div id="animeSearch" style="background: rgba(255,255,255,0.2); width: 100%; max-height: 40vh; margin-top: 0.7vh; border-radius: 1vh; overflow: auto;"></div>
-</div>
--->
