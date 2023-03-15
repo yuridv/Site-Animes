@@ -11,8 +11,10 @@
 
 
 /* LOGO-BUTTON */
-.navbar-button {
+.navbar button {
   display: none!important;
+  background-color: transparent;
+  border: 0;
   z-index: 100;
   height: 100%; 
   align-items: center;
@@ -23,12 +25,6 @@
   margin-right: 3vw;
   margin-top: 0.8vh;
 }
-.navbar-button:hover { transition: 0.5s; color: var(--color-theme) }
-body:has(.navbar-button:hover) .navbar { 
-  background-color: rgba(255,0,0,0.8);
-  height: 100vh;
-}
-
 
 /* LOGO-TEXT */
 .navbar-logo {
@@ -119,11 +115,12 @@ body:has(.navbar-button:hover) .navbar {
   position: absolute;
   width: 14vw;
   height: 5vh;
-  border-radius: 1.8vh;
+  border-radius: 1.5vh;
   border: none;
   padding-right: 2.5vw;
   padding-left: 0.5vw;
   color: var(--color-reverse);
+  background: rgba(255,255,255,0.7)
 } 
 .navbar-icons search i {
   font-size: 3.1vh;
@@ -136,10 +133,23 @@ body:has(.navbar-button:hover) .navbar {
 
 @media screen and (max-width: 900px) {
   .navbar { padding-inline: 5vw; width: 90vw; height: 9vh; }
-  .navbar-button { display: flex!important; }
-  .navbar-logo { font-size: 4vh }
+  .navbar button { display: flex!important; height: 9vh }
+  .navbar button:hover { transition: 0.5s; color: var(--color-theme) }
+  body:has(.navbar button:hover) .navbar { background-color: rgba(0,0,0,0.8); height: 100vh }
+  body:has(.navbar button:hover) .navbar-items, body:has(.navbar-items a:hover) .navbar-items { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 0.5vh solid white;
+    position: absolute;
+    top: 10vh;
+    width: 88vw;
+    height: 85vh;
+  }
+  body:has(.navbar button:hover) .navbar-items a { font-size: 2.8vh; }
+  .navbar-logo { font-size: 4vh; height: 9vh }
   .navbar-items { display: none }
-  .navbar-icons { right: 5vw }
+  .navbar-icons { right: 5vw; margin-top: 0.4vh; height: 9vh }
   .navbar-icons divisor { margin-inline: 3vw }
   .navbar-icons i { font-size: 3vh }
   .navbar-icons search i { font-size: 2.8vh }
