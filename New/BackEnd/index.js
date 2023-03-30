@@ -10,13 +10,13 @@ express()
   .use(bodyparser.json({limit: '100mb', extended: true}))
   .use(bodyparser.urlencoded({limit: '100mb', extended: true}))
 
-  .get('*', (req, res) => res.status(200).json({ status: 'online', path: '/api', version: '0.1' }))
+  .get('*', (req, res) => res.status(200).json({ status: 'online', path: '/', version: '0.1' }))
   
   .post('*', async function(req, res) {
     try {
       let route = await verify(await routes, req.params[0].replace('/','').split("/"))
       if (route.error) return res.status(500).send(route)
-      let result = route(req, res)
+      let result = await route(req, res)
       if (result) return res.status(result.status ? result.status : 200).send(result)
       return res.status(500).send(`A API não retornou nenhuma resposta! Tente novamente...`)
     } catch (err) {

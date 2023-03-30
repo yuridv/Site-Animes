@@ -1,7 +1,7 @@
 {
-  "name": "concredito-dashboard",
+  "name": "star-animes",
   "version": "1.0.0",
-  "description": "dashboard",
+  "description": "website animes",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -9,9 +9,11 @@
   "author": "yuri",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "dotenv-safe": "^8.2.0",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "request": "^2.88.2"
   },
   "license": "MIT",
   "keywords": [

@@ -3,6 +3,7 @@
 
 :root {
   --color-theme: red;
+  --color-theme-rgb: 255,0,0;
 
   --color: white;
   --background-color: black;
@@ -40,3 +41,5 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+a { text-decoration: none; color: white }

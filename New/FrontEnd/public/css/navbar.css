@@ -34,7 +34,6 @@
   display: flex; 
   flex-direction: row;
   font-family: 'Japones', sans-serif!important;
-  text-decoration: none;
   font-size: 5.8vh;
   margin-top: 0.8vh;
   color: var(--color-theme);
@@ -53,7 +52,6 @@
 }
 /* ITEMS - ITEM */
 .navbar-items a {
-  text-decoration: none; 
   color: var(--color); 
   font-size: 2.4vh; 
   font-weight: 600;
