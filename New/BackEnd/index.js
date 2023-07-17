@@ -1,17 +1,17 @@
-console.log(`[Animes]=> Starting...`)
-require('dotenv-safe').config();
-const bodyparser = require("body-parser");
+console.log(`[Base]=> Starting...`)
 const express = require("express");
 let { routes, verify } = require('./src/Routes/routes')
 
 express()
-  .use(require('cors')())
   .use(express.json())
-  .use(bodyparser.json({limit: '100mb', extended: true}))
-  .use(bodyparser.urlencoded({limit: '100mb', extended: true}))
 
-  .get('*', (req, res) => res.status(200).json({ status: 'online', path: '/', version: '0.1' }))
+  // .get('*', (req, res) => res.status(200).json({ status: 'online', path: '/', version: '0.1' }))
   
+
+  .get('*', (req, res) => {
+    
+  })
+
   .post('*', async function(req, res) {
     try {
       let route = await verify(await routes, req.params[0].replace('/','').split("/"))
@@ -27,6 +27,6 @@ express()
   })
 
   .listen(process.env.PORT || 3000, function (err) {
-    if (err) return console.log(`[Animes]=> Error Loading:\n${err}`)
-    console.log(`[Animes]=> Successfully Loaded!`)
+    if (err) return console.log(`[Base]=> Error Loading:\n${err}`)
+    console.log(`[Base]=> Successfully Loaded!`)
   });

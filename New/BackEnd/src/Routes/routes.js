@@ -1,16 +1,25 @@
 const { readdirSync } = require("fs");
+let routes = {}
 
-async function routes(dir = '', obj = {}) {
+function routes(dir = '', obj = {}) {
   readdirSync('./src/Routes/'+dir).forEach(async(file) => {
-    if (file == "routes.js") return;
-    if (file.split('.')[1] == "js") return obj[file.split('.')[0].toLowerCase()] = require(`${dir ? dir : '.'}/${file}`);
-    obj[file.toLowerCase()] = {}
-    await routes(`${dir ? dir : '.'}/${file}`, obj[file.toLowerCase()])
-  });
+    file = file.split('.').map(r=> r.toLowerCase())
+    if (['routes'].includes(file[0])) return;
+    if (file[1] == 'js') return obj[file[0]] = require(`${dir || '.'}/${file[0]}`)
+    obj[file[0]] = {}
+    await routes(`${dir || '.'}/${file[0]}`, obj[file[0]])
+  })
   return obj;
+}(async() => {
+  routes = routes;
+})
+
+async function route(params) {
+  console.log(req)
 }
 
 async function verify(routes, params) {
+  console.log(routes)
   if (params[0] && routes[params[0]]) routes = routes[params[0]]
   if (params[1] && routes[params[1]]) routes = routes[params[1]]
   if (params[2] && routes[params[2]]) routes = routes[params[2]]
@@ -20,6 +29,7 @@ async function verify(routes, params) {
 }
 
 module.exports = {
-  routes: routes().then(r=> { return r }),
+  routes: routes(),
+  route: route,
   verify: verify
 }
